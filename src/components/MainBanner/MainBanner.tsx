@@ -2,6 +2,7 @@ import { BannerType } from "@/types";
 import React from "react";
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
+import { Title } from "@mantine/core";
 
 type BannerProps = {
   banners: BannerType[];
@@ -10,6 +11,7 @@ type BannerProps = {
 const MainBanner = ({ banners }: BannerProps) => {
   return (
     <section style={{ width: "100%" }}>
+      <Title order={1} mb={10}>Banner</Title>
       <Carousel
         withIndicators
         height={200}

@@ -10,12 +10,14 @@ const MainContent = ({ children }: MainContentProps) => {
     <Box
       component="main"
       sx={{
-        padding: "2rem",
+        padding: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#ccc",
+        gap: '1rem',
+        minHeight:'100vh'
       }}
     >
       {children}

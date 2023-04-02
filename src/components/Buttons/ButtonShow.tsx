@@ -3,7 +3,7 @@ import { Button } from "@mantine/core";
 
 type ButtonShowProps = {
   children: React.ReactNode;
-  color: "green" | "yellow";
+  color: "teal" | "orange";
   onClick: () => void;
   disabled?: boolean;
 };
