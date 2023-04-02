@@ -13,8 +13,6 @@ const MainContent = ({ children }: MainContentProps) => {
         padding: "1rem",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: "#ccc",
         gap: '1rem',
         minHeight:'100vh'

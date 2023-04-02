@@ -11,7 +11,7 @@ type BannerProps = {
 const MainBanner = ({ banners }: BannerProps) => {
   return (
     <section style={{ width: "100%" }}>
-      <Title order={1} mb={10}>Banner</Title>
+      <Title order={2} mb={10}>Banner</Title>
       <Carousel
         withIndicators
         height={200}

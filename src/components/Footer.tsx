@@ -1,20 +1,19 @@
 import React from "react";
 import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Box, Title } from "@mantine/core";
 
 const Footer = () => {
   return (
-    <footer
-      className={inter.className}
-      style={{
+    <Box
+      component="footer"
+      sx={{
         backgroundColor: "midnightblue",
-        padding: "20px",
+        padding: "10px",
         color: "white",
       }}
     >
-      Footer
-    </footer>
+      <Title order={5}>Footer</Title>
+    </Box>
   );
 };
 

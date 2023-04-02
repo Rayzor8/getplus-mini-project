@@ -25,7 +25,7 @@ const ArticlePreview = ({ initialArticles }: ArticlePreviewProps) => {
       <TextInput
         placeholder="Type here.."
         label="Search article by title."
-        sx={{ width: "60%", marginBottom: "10px" }}
+        sx={{ width: "50%", margin: "1rem 0" }}
         radius="md"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}

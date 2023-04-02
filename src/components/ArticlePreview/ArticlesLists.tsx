@@ -2,6 +2,7 @@ import { ArticlesType } from "@/types";
 import { Box, Button, Card, Flex, Grid, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
 import ButtonShow from "../Buttons/ButtonShow";
+import Link from "next/link";
 
 type ArticlesListProps = {
   filteredArticles: ArticlesType[];
@@ -43,14 +44,13 @@ const ArticlesLists = ({
 
   return (
     <Box>
-      <Title order={1}>Article preview lists</Title>
+      <Title order={2}>Article preview lists</Title>
       <Flex direction="column" gap="lg" justify="center" align="center">
         <Flex direction="column" gap="lg">
           <Grid gutter={5} columns={4}>
             {filteredArticles.map((article) => (
               <Grid.Col
                 sm={2}
-                xl={1}
                 key={article.id}
                 sx={{
                   display: "flex",
@@ -79,6 +79,8 @@ const ArticlesLists = ({
                     fullWidth
                     mt="md"
                     radius="md"
+                    component={Link}
+                    href={`/detail/${article.id}`}
                   >
                     See Details
                   </Button>
