@@ -17,7 +17,7 @@ const ArticlesLists = ({
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-
+  
   const limit = 10;
   const maxPage = 5;
   const total = limit * maxPage;
@@ -30,15 +30,14 @@ const ArticlesLists = ({
         `https://62d5368fd4406e5235558a46.mockapi.io/articles?page=${nextPage}&limit=${limit}`
       );
       const nextArticles = await res.json();
-      setArticles([...articles, ...nextArticles]);
+      setArticles(prevArticle => [...prevArticle,...nextArticles])
       setCurrentPage(nextPage);
     }
     setLoading(false);
   }
 
   async function handleShowLess() {
-    const newArticles = articles.slice(0, articles.length - limit);
-    setArticles(newArticles);
+    setArticles(prevArticle => prevArticle.slice(0, articles.length - limit));
     setCurrentPage(currentPage - 1);
   }
 

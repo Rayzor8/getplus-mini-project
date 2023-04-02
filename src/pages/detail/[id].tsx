@@ -3,6 +3,7 @@ import { Box, Flex, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 import moment from "moment";
+import Comments from "@/components/ArticlePreview/Comments";
 
 export const getStaticPaths = async () => {
   const res = await fetch(
@@ -41,7 +42,10 @@ const dummyImg =
 
 const ArticleDetail = ({ article }: { article: ArticlesType }) => {
   return (
-    <Box component="section">
+    <Box
+      component="section"
+      sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+    >
       <Flex
         sx={{ backgroundColor: "white", padding: "1rem" }}
         gap={40}
@@ -65,6 +69,8 @@ const ArticleDetail = ({ article }: { article: ArticlesType }) => {
           </Text>
         </Flex>
       </Flex>
+
+      <Comments article={article} />
     </Box>
   );
 };

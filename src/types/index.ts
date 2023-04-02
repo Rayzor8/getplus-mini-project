@@ -13,3 +13,11 @@ export interface ArticlesType {
   createBy: string;
   id: string;
 }
+
+export interface CommentsType{
+  createdAt:string;
+  user:string;
+  comment:string;
+  id:string;
+  articleId:string;
+}
