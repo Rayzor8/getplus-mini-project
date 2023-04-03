@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <Box
       component="footer"
+      bg="violet"
       sx={{
-        backgroundColor: "midnightblue",
         padding: "10px",
         color: "white",
       }}

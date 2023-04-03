@@ -1,12 +1,11 @@
-import { Text, Title } from "@mantine/core";
+import { Box, Text, Title } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 
 const Header = () => {
   return (
-    <header
-      style={{
-        backgroundColor: "midnightblue",
+    <Box component="header" bg="violet"
+      sx={{
         padding: "20px",
         color: "white",
       }}
@@ -14,7 +13,7 @@ const Header = () => {
       <Link href="/">
         <Title color="white">Homepage</Title>
       </Link>
-    </header>
+    </Box>
   );
 };
 

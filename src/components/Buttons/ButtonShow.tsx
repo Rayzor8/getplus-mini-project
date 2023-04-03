@@ -3,7 +3,7 @@ import { Button } from "@mantine/core";
 
 type ButtonShowProps = {
   children: React.ReactNode;
-  color: "teal" | "orange";
+  color: "violet" | "red";
   onClick: () => void;
   disabled?: boolean;
 };
@@ -19,7 +19,8 @@ const ButtonShow = ({
       color={color}
       onClick={onClick}
       disabled={disabled}
-      sx={{ maxWidth: "max-content" }}
+      // sx={{ maxWidth: "max-content" }}
+      px={{base:20,sm:60}}
     >
       {children}
     </Button>

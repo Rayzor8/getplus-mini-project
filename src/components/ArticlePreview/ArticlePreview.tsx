@@ -22,18 +22,21 @@ const ArticlePreview = ({ initialArticles }: ArticlePreviewProps) => {
 
   return (
     <Box component="section">
-      <TextInput
-        placeholder="Type here.."
-        label="Search article by title."
-        sx={{ width: "50%", margin: "1rem 0" }}
-        radius="md"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <Box maw={760}>
+        <TextInput
+          placeholder="Type here.."
+          label="Search article by title."
+          sx={{ margin: "1rem 0" }}
+          radius="md"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </Box>
       <ArticlesLists
         filteredArticles={filteredArticles}
         articles={articles}
         setArticles={setArticles}
+        searchQuery={searchQuery}
       />
     </Box>
   );

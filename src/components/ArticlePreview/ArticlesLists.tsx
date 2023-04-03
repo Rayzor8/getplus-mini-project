@@ -9,12 +9,14 @@ type ArticlesListProps = {
   filteredArticles: ArticlesType[];
   articles: ArticlesType[];
   setArticles: React.Dispatch<React.SetStateAction<ArticlesType[]>>;
+  searchQuery:string
 };
 
 const ArticlesLists = ({
   filteredArticles,
   articles,
   setArticles,
+  searchQuery
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -47,26 +49,10 @@ const ArticlesLists = ({
       <Title order={2}>Article preview lists</Title>
       <Flex direction="column" gap="lg" justify="center" align="center">
         <Flex direction="column" gap="lg">
-          <Grid gutter={5} columns={4}>
+          <Grid gutter={10} columns={4} grow>
             {filteredArticles.map((article) => (
-              <Grid.Col
-                sm={2}
-                key={article.id}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: "10px",
-                }}
-              >
-                <Card shadow="sm" padding="lg" radius="md" withBorder>
-                  {/* <Card.Section>
-                <MantineImage
-                  src={article.image}
-                  height={160}
-                  alt={`article-img-${article.title}`}
-                />
-              </Card.Section> */}
-
+              <Grid.Col sm={2} key={article.id}>
+                <Card shadow="sm" padding="lg" radius="md">
                   <Text weight={500}>{article.title}</Text>
 
                   <Text size="sm" color="dimmed">
@@ -75,8 +61,7 @@ const ArticlesLists = ({
 
                   <Button
                     variant="light"
-                    color="blue"
-                    fullWidth
+                    color="violet"
                     mt="md"
                     radius="md"
                     component={Link}
@@ -89,10 +74,10 @@ const ArticlesLists = ({
             ))}
           </Grid>
 
-          {filteredArticles.length > 0 && (
+          {!searchQuery && (
             <Flex gap="lg">
               {!loading && filteredArticles.length > 10 && (
-                <ButtonShow onClick={handleShowLess} color="orange">
+                <ButtonShow onClick={handleShowLess} color="red">
                   Show Less
                 </ButtonShow>
               )}
@@ -100,9 +85,9 @@ const ArticlesLists = ({
                 <ButtonShow
                   onClick={handleShowMore}
                   disabled={currentPage === maxPage}
-                  color="teal"
+                  color="violet"
                 >
-                  Show More
+                  View More
                 </ButtonShow>
               )}
             </Flex>
