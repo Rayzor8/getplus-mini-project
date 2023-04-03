@@ -5,37 +5,16 @@ import React from "react";
 import moment from "moment";
 import Comments from "@/components/ArticlePreview/Comments";
 
-export const getStaticPaths = async () => {
-  const res = await fetch(
-    "https://62d5368fd4406e5235558a46.mockapi.io/articles"
+export async function getServerSideProps({ params }: any) {
+  const articleRes = await fetch(
+    `https://62d5368fd4406e5235558a46.mockapi.io/articles/${params.id}`
   );
-  const articles: ArticlesType[] = await res.json();
-
-  const paths = articles.map((article) => ({
-    params: { id: article.id.toString() },
-  }));
-
   return {
-    paths,
-    fallback: false,
+    props: {
+      article: await articleRes.json(),
+    },
   };
-};
-
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { id: string };
-}) => {
-  const id = params.id;
-  const res = await fetch(
-    `https://62d5368fd4406e5235558a46.mockapi.io/articles/${id}`
-  );
-  const data = await res.json();
-
-  return {
-    props: { article: data },
-  };
-};
+}
 
 const dummyImg =
   "https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80";

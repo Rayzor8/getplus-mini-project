@@ -3,6 +3,7 @@ import { Box, Button, Card, Flex, Grid, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
 import ButtonShow from "../Buttons/ButtonShow";
 import Link from "next/link";
+import axios from "axios";
 
 type ArticlesListProps = {
   filteredArticles: ArticlesType[];
@@ -17,7 +18,7 @@ const ArticlesLists = ({
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  
+
   const limit = 10;
   const maxPage = 5;
   const total = limit * maxPage;
@@ -26,18 +27,18 @@ const ArticlesLists = ({
     setLoading(true);
     const nextPage = currentPage + 1;
     if (nextPage <= maxPage) {
-      const res = await fetch(
+      const { data } = await axios(
         `https://62d5368fd4406e5235558a46.mockapi.io/articles?page=${nextPage}&limit=${limit}`
       );
-      const nextArticles = await res.json();
-      setArticles(prevArticle => [...prevArticle,...nextArticles])
+
+      setArticles((prevArticle) => [...prevArticle, ...data]);
       setCurrentPage(nextPage);
     }
     setLoading(false);
   }
 
   async function handleShowLess() {
-    setArticles(prevArticle => prevArticle.slice(0, articles.length - limit));
+    setArticles((prevArticle) => prevArticle.slice(0, articles.length - limit));
     setCurrentPage(currentPage - 1);
   }
 
@@ -79,7 +80,7 @@ const ArticlesLists = ({
                     mt="md"
                     radius="md"
                     component={Link}
-                    href={`/detail/${article.id}`}
+                    href={`/${article.id}`}
                   >
                     See Details
                   </Button>
